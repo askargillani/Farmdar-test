@@ -1,0 +1,13 @@
+<button (click)="getBlogs()">Reload</button>
+<p *ngIf="error">Data not loaded.</p>
+
+<div *ngIf="dataFromServer$ | async as dataFromServer">
+  <div *ngFor="let post of dataFromServer.posts" class="post-card">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
+    <p><strong>Tags:</strong> {{ post.tags.join(', ') }}</p>
+    <p><strong>Likes:</strong> {{ post.reactions.likes }} | <strong>Dislikes:</strong> {{ post.reactions.dislikes }}</p>
+    <p><strong>Views:</strong> {{ post.views }}</p>
+    <p><strong>User ID:</strong> {{ post.userId }}</p>
+  </div>
+</div>
